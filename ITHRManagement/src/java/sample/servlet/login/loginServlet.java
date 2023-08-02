@@ -42,7 +42,7 @@ public class loginServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String email = request.getParameter("txtEmail");
             String password = request.getParameter("txtPassword");
-            String save = request.getParameter("remember-me");
+            String save = request.getParameter("rememberMe");
             User user = null;
             boolean validLogin = UserDAO.checkLogin(email, password);
             if (validLogin) {
@@ -51,13 +51,13 @@ public class loginServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("USER", user);
                     if (save != null && save.equals("on")) {
-                        Cookie cookie = new Cookie(email, password);
+                        Cookie cookie = new Cookie("USER", user.getRole());
                         cookie.setMaxAge(60 * 3);
                         response.addCookie(cookie);
                     }
-                    int role = user.getRole();
-                    if (role == 1) {
-                        response.getWriter().println("{\"success\": true, \"role\": \"admin\"}");
+                    String role = user.getRole();
+                    if (role.equalsIgnoreCase("Manager")) {
+                        response.getWriter().println("{\"success\": true, \"role\": \"manager\"}");
                     }
                 }
             } else {

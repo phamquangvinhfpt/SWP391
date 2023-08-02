@@ -12,25 +12,28 @@ import java.sql.Date;
  * @author Admin
  */
 public class User {
-
+    private String ID;
     private String Email;
     private String FullName;
     private Date Dob;
+    private Boolean Gender;
     private String Address;
     private String Password;
     private String Image;
     private String BankAccountNumber;
     private String BankAccountName;
     private String BankName;
-    private int Role;
+    private String Role;
 
     public User() {
     }
 
-    public User(String Email, String FullName, Date Dob, String Address, String Password, String Image, String BankAccountNumber, String BankAccountName, String BankName, int Role) {
+    public User(String ID, String Email, String FullName, Date Dob, Boolean Gender, String Address, String Password, String Image, String BankAccountNumber, String BankAccountName, String BankName, String Role) {
+        this.ID = ID;
         this.Email = Email;
         this.FullName = FullName;
         this.Dob = Dob;
+        this.Gender = Gender;
         this.Address = Address;
         this.Password = Password;
         this.Image = Image;
@@ -38,6 +41,14 @@ public class User {
         this.BankAccountName = BankAccountName;
         this.BankName = BankName;
         this.Role = Role;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getEmail() {
@@ -62,6 +73,14 @@ public class User {
 
     public void setDob(Date Dob) {
         this.Dob = Dob;
+    }
+
+    public Boolean getGender() {
+        return Gender;
+    }
+
+    public void setGender(Boolean Gender) {
+        this.Gender = Gender;
     }
 
     public String getAddress() {
@@ -112,11 +131,11 @@ public class User {
         this.BankName = BankName;
     }
 
-    public int getRole() {
+    public String getRole() {
         return Role;
     }
 
-    public void setRole(int Role) {
+    public void setRole(String Role) {
         this.Role = Role;
     }
 

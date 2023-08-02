@@ -33,7 +33,7 @@
             var rememberMe = $("input[name='remember-me']").val();
             $.ajax({
                 url: "/ITHRManagement/loginServlet",
-                type: "POST",
+                type: "GET",
                 data: {
                     txtEmail: email,
                     txtPassword: password,
@@ -42,7 +42,7 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data.success) {
-                        if (data.role === 'admin') {
+                        if (data.role === 'manager') {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -113,7 +113,7 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
-<script src="assets/js/feather.min.js"></script>
+<!--<script src="assets/js/feather.min.js"></script>-->
 
 <script src="assets/js/script.js"></script>
 </body>
