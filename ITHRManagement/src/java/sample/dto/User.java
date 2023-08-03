@@ -24,11 +24,12 @@ public class User {
     private String BankAccountName;
     private String BankName;
     private String Role;
+    private int leave_balance;
 
     public User() {
     }
 
-    public User(String ID, String Email, String FullName, Date Dob, Boolean Gender, String Address, String Password, String Image, String BankAccountNumber, String BankAccountName, String BankName, String Role) {
+    public User(String ID, String Email, String FullName, Date Dob, Boolean Gender, String Address, String Password, String Image, String BankAccountNumber, String BankAccountName, String BankName, String Role, int leave_balance) {
         this.ID = ID;
         this.Email = Email;
         this.FullName = FullName;
@@ -41,6 +42,7 @@ public class User {
         this.BankAccountName = BankAccountName;
         this.BankName = BankName;
         this.Role = Role;
+        this.leave_balance = leave_balance;
     }
 
     public String getID() {
@@ -139,4 +141,12 @@ public class User {
         this.Role = Role;
     }
 
+    public int getLeave_balance() {
+        return leave_balance;
+    }
+
+    public void setLeave_balance(int leave_balance) {
+        this.leave_balance = leave_balance;
+    }
+    
 }
