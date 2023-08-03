@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import sample.utils.*;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ContractDAO {
     public List<ContractDTO> getListContract() {
         return listContract;
     }
-    public void getAllListContract(){
+    public void getAllListContract() throws SQLException{
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -60,10 +61,18 @@ public class ContractDAO {
         } catch (Exception ex) {
             Logger.getLogger(ContractDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            
+            if(rs != null){
+                rs.close();
+            }
+            if(ps != null){
+                ps.close();
+            }
+            if(con != null){
+                con.close();
+            }
         }
     }
-    public void getContractByStaffID(String User_id){
+    public void getContractByStaffID(String User_id) throws SQLException{
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -97,7 +106,15 @@ public class ContractDAO {
         } catch (Exception ex) {
             Logger.getLogger(ContractDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            
+            if(rs != null){
+                rs.close();
+            }
+            if(ps != null){
+                ps.close();
+            }
+            if(con != null){
+                con.close();
+            }
         }
     }
     
