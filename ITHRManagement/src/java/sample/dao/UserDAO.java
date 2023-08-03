@@ -61,7 +61,7 @@ public class UserDAO {
             if (cn != null) {
                 String sql = "SELECT [ID], [Email], [FullName], [Dob], [Gender], [Address] ,[Password], [Image], [BankAccountNumber]\n"
                         + ", [BankAccountName], [BankName], [Status], (select [Name] from [dbo].[Role] "
-                        + "where [dbo].[Role].ID = [dbo].[User].RoleId) as Role_Name from [dbo].[User] \n"
+                        + "where [dbo].[Role].ID = [dbo].[User].RoleId) as Role_Name, [leave_balance] from [dbo].[User] \n"
                         + "where [Email] = ? and [Password] = ?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, Email);

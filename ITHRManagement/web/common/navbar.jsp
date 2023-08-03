@@ -48,10 +48,10 @@
                     <li class="nav-item dropdown has-arrow main-drop">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <span class="user-img">
-                                <img src="/HRManagement/images/<c:out value="${sessionScope.user.getImage()}"/>" alt="">
+                                <img src="/HRManagement/images/<c:out value="${sessionScope.USER.getImage()}"/>" alt="">
                                 <span class="status online"></span>
                             </span>
-                            <span><c:out value="${sessionScope.user.getName()}"/></span>
+                            <span><c:out value="${sessionScope.USER.getFullName()}"/></span>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="profile.jsp"><i data-feather="user" class="mr-1"></i> Profile</a>
