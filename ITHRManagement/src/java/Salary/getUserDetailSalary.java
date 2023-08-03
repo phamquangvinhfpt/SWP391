@@ -6,12 +6,11 @@
 package Salary;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,14 +19,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import sample.dao.PaySlipDAO;
+import sample.dao.UserDAO;
 import sample.dto.SalaryDTO;
+import sample.dto.User;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "LoadSalaryServlet", urlPatterns = {"/LoadSalaryServlet"})
-public class LoadSalaryServlet extends HttpServlet {
+@WebServlet(name = "getUserDetailSalary", urlPatterns = {"/getUserDetailSalary"})
+public class getUserDetailSalary extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,20 +43,25 @@ public class LoadSalaryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String Staff_ID = request.getParameter("id");
             Calendar cal = Calendar.getInstance();
             long millis = System.currentTimeMillis();
             Date date = new Date(millis);
             cal.setTime(date);
             int month = cal.get(Calendar.MONTH);
-            PaySlipDAO dao = new PaySlipDAO();
-            List<SalaryDTO> list = dao.getSalaryInMonth(month);
-            response.setContentType("application/json");
+            UserDAO userDao = new UserDAO();
+            User user = userDao.getUserByID(Staff_ID);
+            PaySlipDAO pDAO = new PaySlipDAO();
+            SalaryDTO salary = pDAO.getSalaryInMonthOfStaff(Staff_ID, month);
             response.setStatus(200);
+            JsonObject jsonObject = new JsonObject();
             Gson gson = new Gson();
-            String json = gson.toJson(list);
-            out.println(json);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoadSalaryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            jsonObject.add("user", gson.toJsonTree(user));
+            jsonObject.add("salary", gson.toJsonTree(salary));
+            out.println(jsonObject.toString());
+        } catch (Exception ex) {
+            Logger.getLogger(getUserDetailSalary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

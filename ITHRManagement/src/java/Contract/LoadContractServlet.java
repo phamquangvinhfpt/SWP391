@@ -3,31 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Salary;
+package Contract;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sample.dao.PaySlipDAO;
-import sample.dto.SalaryDTO;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "LoadSalaryServlet", urlPatterns = {"/LoadSalaryServlet"})
-public class LoadSalaryServlet extends HttpServlet {
+@WebServlet(name = "LoadContractServlet", urlPatterns = {"/LoadContractServlet"})
+public class LoadContractServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,20 +33,8 @@ public class LoadSalaryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Calendar cal = Calendar.getInstance();
-            long millis = System.currentTimeMillis();
-            Date date = new Date(millis);
-            cal.setTime(date);
-            int month = cal.get(Calendar.MONTH);
-            PaySlipDAO dao = new PaySlipDAO();
-            List<SalaryDTO> list = dao.getSalaryInMonth(month);
-            response.setContentType("application/json");
-            response.setStatus(200);
-            Gson gson = new Gson();
-            String json = gson.toJson(list);
-            out.println(json);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoadSalaryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            /* TODO output your page here. You may use following sample code. */
+            
         }
     }
 
