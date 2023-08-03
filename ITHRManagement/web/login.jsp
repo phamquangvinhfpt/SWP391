@@ -46,7 +46,7 @@
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Login success',
+                            title: 'Login success!',
                             showConfirmButton: false,
                             timer: 1500
                         }).then((value) => {
@@ -57,7 +57,7 @@
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
-                            title: 'Login fail',
+                            title: 'Login failed!',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -75,7 +75,7 @@
 <div class="login-right">
 <div class="login-right-wrap">
 <h1>Login</h1>
-<p class="account-subtitle">Access to our dashboard</p>
+
 <form method="POST" name="login">
 <div class="form-group">
 <label class="form-control-label">Email Address</label>
@@ -97,7 +97,7 @@
 </div>
 </div>
 <div class="col-6 text-right">
-<a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
+    <a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
 </div>
 </div>
 </div>

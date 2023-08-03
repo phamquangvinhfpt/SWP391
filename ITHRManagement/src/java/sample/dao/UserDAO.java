@@ -80,7 +80,8 @@ public class UserDAO {
                     String bankAccountName = rs.getString("BankAccountName");
                     String bankName = rs.getString("BankName");
                     String role = rs.getString("Role_Name");
-                    user = new User(id, email, fullname, dob, gender, address, password, image, bankAccountNumber, bankAccountName, bankName, role);
+                    int leave_balance = rs.getInt("leave_balance");
+                    user = new User(id, email, fullname, dob, gender, address, password, image, bankAccountNumber, bankAccountName, bankName, role, leave_balance);
                 }
             }
         } catch (Exception e) {
